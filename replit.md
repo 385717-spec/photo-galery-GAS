@@ -5,7 +5,7 @@ This project is a React and TypeScript photo gallery built with Vite and Tailwin
 ## Run on Replit
 
 - Start the app with the **Start application** workflow.
-- The workflow runs `npm run dev` and serves the app on port 5000.
+- The workflow runs `npm run dev` and serves the app on port 3000.
 - No environment variables are currently required.
 
 ## Useful commands
