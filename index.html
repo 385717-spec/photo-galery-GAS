@@ -4,16 +4,222 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My App</title>
-    <meta name="description" content="A blank starter application ready for development." />
-    <meta property="og:title" content="My App" />
-    <meta property="og:description" content="A blank starter application ready for development." />
+    <title>Photo Gallery Grid</title>
+    <meta name="description" content="A 9-photo gallery grid with 3 rows and 3 columns of equal dimensions, each featuring an image and title." />
+    <meta property="og:title" content="Photo Gallery Grid" />
+    <meta property="og:description" content="A 9-photo gallery grid with 3 rows and 3 columns of equal dimensions, each featuring an image and title." />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background-color: #fafaf9;
+        color: #1c1917;
+        padding: 2rem 1rem;
+        min-height: 100vh;
+      }
+      .gallery-container {
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+      .gallery-header {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+      .gallery-title {
+        font-size: 1.75rem;
+        font-weight: 700;
+        letter-spacing: -0.025em;
+        color: #1c1917;
+        margin-bottom: 0.5rem;
+      }
+      .gallery-subtitle {
+        font-size: 0.875rem;
+        color: #78716c;
+      }
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem;
+      }
+      @media (max-width: 768px) {
+        .gallery-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 1rem;
+        }
+      }
+      @media (max-width: 480px) {
+        .gallery-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+      .photo-card {
+        background: #ffffff;
+        border-radius: 0.75rem;
+        border: 1px solid #e7e5e4;
+        overflow: hidden;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+      .photo-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      }
+      .image-wrapper {
+        position: relative;
+        width: 100%;
+        padding-top: 100%; /* Equal 1:1 square dimensions */
+        background-color: #f5f5f4;
+        overflow: hidden;
+      }
+      .image-wrapper img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .photo-info {
+        padding: 0.875rem 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+      }
+      .photo-title {
+        font-size: 0.9375rem;
+        font-weight: 600;
+        color: #1c1917;
+        line-height: 1.25;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .photo-caption {
+        font-size: 0.75rem;
+        color: #a8a29e;
+      }
+    </style>
   </head>
-  <body class="bg-[#fafaf9] text-stone-900 antialiased min-h-screen selection:bg-stone-200">
-    <div id="root"></div>
+  <body>
+    <div id="root">
+      <main class="gallery-container">
+        <header class="gallery-header">
+          <h1 class="gallery-title">Photo Gallery</h1>
+          <p class="gallery-subtitle">A curated 3&times;3 photo collection</p>
+        </header>
+
+        <section class="gallery-grid" id="photo-grid-section">
+          <!-- Row 1, Col 1 -->
+          <article class="photo-card" id="photo-item-1">
+            <div class="image-wrapper">
+              <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&h=600&q=80" alt="Alpine Mountain Lake" loading="lazy" />
+            </div>
+            <div class="photo-info">
+              <h2 class="photo-title">Alpine Mountain Lake</h2>
+              <span class="photo-caption">Placeholder Photo 1</span>
+            </div>
+          </article>
+
+          <!-- Row 1, Col 2 -->
+          <article class="photo-card" id="photo-item-2">
+            <div class="image-wrapper">
+              <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=600&h=600&q=80" alt="Modern Architecture" loading="lazy" />
+            </div>
+            <div class="photo-info">
+              <h2 class="photo-title">Modern Architecture</h2>
+              <span class="photo-caption">Placeholder Photo 2</span>
+            </div>
+          </article>
+
+          <!-- Row 1, Col 3 -->
+          <article class="photo-card" id="photo-item-3">
+            <div class="image-wrapper">
+              <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&w=600&h=600&q=80" alt="Bamboo Forest" loading="lazy" />
+            </div>
+            <div class="photo-info">
+              <h2 class="photo-title">Bamboo Forest</h2>
+              <span class="photo-caption">Placeholder Photo 3</span>
+            </div>
+          </article>
+
+          <!-- Row 2, Col 1 -->
+          <article class="photo-card" id="photo-item-4">
+            <div class="image-wrapper">
+              <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=600&h=600&q=80" alt="Neon City Rain" loading="lazy" />
+            </div>
+            <div class="photo-info">
+              <h2 class="photo-title">Neon City Rain</h2>
+              <span class="photo-caption">Placeholder Photo 4</span>
+            </div>
+          </article>
+
+          <!-- Row 2, Col 2 -->
+          <article class="photo-card" id="photo-item-5">
+            <div class="image-wrapper">
+              <img src="https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=600&h=600&q=80" alt="Desert Sand Dunes" loading="lazy" />
+            </div>
+            <div class="photo-info">
+              <h2 class="photo-title">Desert Sand Dunes</h2>
+              <span class="photo-caption">Placeholder Photo 5</span>
+            </div>
+          </article>
+
+          <!-- Row 2, Col 3 -->
+          <article class="photo-card" id="photo-item-6">
+            <div class="image-wrapper">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&h=600&q=80" alt="Studio Shadow Portrait" loading="lazy" />
+            </div>
+            <div class="photo-info">
+              <h2 class="photo-title">Studio Shadow Portrait</h2>
+              <span class="photo-caption">Placeholder Photo 6</span>
+            </div>
+          </article>
+
+          <!-- Row 3, Col 1 -->
+          <article class="photo-card" id="photo-item-7">
+            <div class="image-wrapper">
+              <img src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?auto=format&fit=crop&w=600&h=600&q=80" alt="Coastal Cliff Waves" loading="lazy" />
+            </div>
+            <div class="photo-info">
+              <h2 class="photo-title">Coastal Cliff Waves</h2>
+              <span class="photo-caption">Placeholder Photo 7</span>
+            </div>
+          </article>
+
+          <!-- Row 3, Col 2 -->
+          <article class="photo-card" id="photo-item-8">
+            <div class="image-wrapper">
+              <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=600&h=600&q=80" alt="Scenic Highway" loading="lazy" />
+            </div>
+            <div class="photo-info">
+              <h2 class="photo-title">Scenic Highway</h2>
+              <span class="photo-caption">Placeholder Photo 8</span>
+            </div>
+          </article>
+
+          <!-- Row 3, Col 3 -->
+          <article class="photo-card" id="photo-item-9">
+            <div class="image-wrapper">
+              <img src="https://images.unsplash.com/photo-1477959858617-67f30bc75b82?auto=format&fit=crop&w=600&h=600&q=80" alt="Old Town Street" loading="lazy" />
+            </div>
+            <div class="photo-info">
+              <h2 class="photo-title">Old Town Street</h2>
+              <span class="photo-caption">Placeholder Photo 9</span>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
