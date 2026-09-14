@@ -12,3 +12,4 @@ This project is a React and TypeScript photo gallery built with Vite and Tailwin
 
 - `npm run lint` checks TypeScript types.
 - `npm run build` creates a production build in `dist/`.
+- `npm run test:e2e` runs the responsive Playwright gallery smoke test in desktop and mobile Chromium sizes.
