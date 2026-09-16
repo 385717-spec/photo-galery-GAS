@@ -1,6 +1,6 @@
 {
   "name": "Photo Gallery Grid",
-  "description": "A 9-photo food gallery grid with 3 rows and 3 columns of equal dimensions, featuring dessert, spicy, and salty sub-themes.",
+  "description": "A 9-photo food gallery grid with 3 rows and 3 columns of equal dimensions, featuring dessert, spicy, and salty sub-themes with interactive meal descriptions and locations.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
